@@ -1,0 +1,4 @@
+test/
+-b
+--recursive
+--timeout 5000
