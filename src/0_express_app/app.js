@@ -1,9 +1,7 @@
-'use strict';
-
 const http = require('http');
 const express = require('express');
 
-const logger = require('chpr-logger');
+const logger = require('../utils/logger');
 
 const { configure } = require('./config/express');
 
@@ -25,13 +23,10 @@ async function start() {
   server = http.createServer(app);
   await server.listen(app.get('port'));
 
-  logger.info(
-    {
-      port: server.address().port,
-      environment: process.env.NODE_ENV,
-    },
-    '✔ Server running 🍺',
-  );
+  logger.info('✔ Server running 🍺', {
+    port: server.address().port,
+    environment: process.env.NODE_ENV,
+  });
 
   return app;
 }
